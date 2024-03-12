@@ -10,4 +10,11 @@ describe("User clicks on field 'Where are you going'", () => {
         home.typeInSearchField()
         home.validateAndRandomSelectCityField()
     })
+    it("User clicks on calendar", () => {
+        home.closeDismissSignInfo()
+        //home.typeInSearchField()
+        home.validateAndRandomSelectCityField()
+        home.selectStartDate()
+        home.selectEndDate()
+    })
 })
