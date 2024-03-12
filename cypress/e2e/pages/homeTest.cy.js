@@ -12,9 +12,15 @@ describe("User clicks on field 'Where are you going'", () => {
     })
     it("User clicks on calendar", () => {
         home.closeDismissSignInfo()
-        //home.typeInSearchField()
         home.validateAndRandomSelectCityField()
         home.selectStartDate()
         home.selectEndDate()
+    })
+    it("User clicks on submit button", () => {
+        home.closeDismissSignInfo()
+        home.validateAndRandomSelectCityField()
+        home.selectStartDate()
+        home.selectEndDate()
+        home.clickAndValidateSubmit()
     })
 })

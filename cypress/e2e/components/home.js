@@ -6,6 +6,7 @@ export class Home {
     getOpenCalendarField: () => cy.get('div[data-testid="searchbox-dates-container"]'),
     getBodyCalendar: () => cy.get('div[data-testid="searchbox-datepicker-calendar"]'),
     getNextMonth: () => cy.get('div[data-testid="searchbox-datepicker-calendar"]').find('button'),
+    getSubmitButton: () => cy.get('button[type="submit"]')
   };
   listOptionsCities() {
     return cy.get("ul").find("li[role=option]");
@@ -52,5 +53,8 @@ export class Home {
     );
     const endDay = endDate.getDate();
     this.selectDate(endDay);
+  }
+  clickAndValidateSubmit = () => {
+    this.elements.getSubmitButton().should('be.visible').click()
   }
 }
