@@ -2,7 +2,7 @@ import { Home } from "../components/home";
 import { ResultsSearch } from "../components/resultsSearch";
 const home = new Home();
 const resultsSearch = new ResultsSearch();
-describe("", () => {
+describe("Search for accommodation in a date range and check availability", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.wait(3000);
@@ -48,7 +48,6 @@ describe("", () => {
     resultsSearch.openFirstItem('div[data-testid="property-card"]')
     cy.wait(5000)
     resultsSearch.validateWindow()
-    //resultsSearch.clickAvailabilityButton()
     resultsSearch.validateAvailableRooms()
   })
 });
