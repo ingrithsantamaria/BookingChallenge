@@ -2,6 +2,7 @@ import 'cypress-wait-until'
 export class ResultsSearch {
   elements = {
     getOptionsFilter: () => cy.get('div input[type="checkbox"]'),
+    getFirstElementWithFilter: () => cy.get('div[data-testid="property-card"]').eq(0)
   };
   selectRandomFilter() {
     this.elements.getOptionsFilter().then(($checkboxes) => {
@@ -25,4 +26,8 @@ export class ResultsSearch {
       });
     });
   }
+  selectFirstElementWithFilter = () => {
+    this.elements.getFirstElementWithFilter().find('div[data-testid="recommended-units"]').click()
+  }
+
 }

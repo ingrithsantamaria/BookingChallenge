@@ -6,7 +6,6 @@ describe("", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.wait(3000);
-    cy.intercept('POST', '/api/filters').as('filterRequest')
   });
   it("User submits search and is redirected to results", () => {
     home.closeDismissSignInfo();
@@ -17,4 +16,13 @@ describe("", () => {
     resultsSearch.selectRandomFilter()
     // resultsSearch.selectMultipleRandomFilters(3);
   });
+  it("User select the first results", () => {
+    home.closeDismissSignInfo();
+    home.validateAndRandomSelectCityField();
+    home.selectStartDate();
+    home.selectEndDate();
+    home.clickAndValidateSubmit();
+    resultsSearch.selectRandomFilter()
+    resultsSearch.selectFirstElementWithFilter()
+  })
 });
