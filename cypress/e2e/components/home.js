@@ -12,7 +12,11 @@ export class Home {
     return cy.get("ul").find("li[role=option]");
   }
   closeDismissSignInfo = () => {
-    this.elements.getCloseDismissSignInfo().click();
+    this.elements.getCloseDismissSignInfo().then(($element) => {
+        if ($element.is(':visible')){
+            cy.wrap($element).click()
+        }
+    })
   };
   typeInSearchField() {
     const query = "San";
