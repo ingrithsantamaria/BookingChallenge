@@ -3,7 +3,8 @@ export class ResultsSearch {
   elements = {
     getOptionsFilter: () => cy.get('div input[type="checkbox"]'),
     getFirstElementWithFilter: () => cy.get('div[data-testid="property-card"]').eq(0),
-    getAvailabilityButton: () => cy.get('button[data-testid="reviews-block-availability"]')
+    getAvailabilityButton: () => cy.get('button[data-testid="reviews-block-availability"]'),
+    getTableAvailability: () => cy.get('#hprt-table')
   };
   selectRandomFilter() {
     this.elements.getOptionsFilter().then(($checkboxes) => {
@@ -36,5 +37,13 @@ export class ResultsSearch {
   validateWindow = () => {
     cy.url().should('include', '/hotel')
     this.elements.getAvailabilityButton().should('be.visible')
+    this.elements.getAvailabilityButton().click()
+
+  }
+  clickAvailabilityButton = () => {
+    this.elements.getAvailabilityButton().click()
+  }
+  validateAvailableRooms = () => {
+    this.elements.getTableAvailability().find('tbody tr td').should('not.be.empty')
   }
 }
