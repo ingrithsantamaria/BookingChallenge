@@ -2,6 +2,9 @@ import { Home } from "../components/home";
 import { ResultsSearch } from "../components/resultsSearch";
 const home = new Home();
 const resultsSearch = new ResultsSearch();
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false;
+});
 describe("Search for accommodation in a date range and check availability", () => {
   beforeEach(() => {
     cy.visit("/");

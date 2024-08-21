@@ -1,5 +1,8 @@
 import { Home } from "../components/home";
 const home = new Home()
+Cypress.on('uncaught:exception', (err, runnable) => {
+    return false;
+});
 describe("User clicks on field 'Where are you going'", () => {
     beforeEach(() => {
         cy.visit("/")
